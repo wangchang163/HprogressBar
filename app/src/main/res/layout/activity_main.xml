@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.testing.hprogressbar.MainActivity">
+
+    <com.example.testing.library.HprogressView
+        android:id="@+id/hProgressView"
+        android:layout_width="match_parent"
+        android:layout_height="12dp"
+        app:bg_color="@color/colorPrimary"
+        app:pro_color="@color/colorAccent"
+        app:txt_color="#FFFFFF"
+        android:layout_gravity="center"
+        android:layout_margin="12dp"
+        />
+
+</LinearLayout>
