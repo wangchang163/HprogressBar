@@ -39,3 +39,44 @@ Step 3. XML
 
 Step 4. Java
 
+示例：
+
+        hProgressView= (HprogressView) findViewById(R.id.hProgressView);
+        hProgressView.startAnim();
+        
+        
+真实运用：
+
+        hProgressView= (HprogressView) findViewById(R.id.hProgressView);
+//        hProgressView.startAnim();
+
+        final Handler handler=new Handler(new Handler.Callback() {
+            @Override
+            public boolean handleMessage(Message message) {
+                switch (message.what){
+                    case 1:
+                        hProgressView.setProgress(message.arg1);
+                        break;
+                }
+                return false;
+            }
+        });
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                for (int i=0;i<101;i++){
+                    Message message=new Message();
+                    message.what=1;
+                    message.arg1=i;
+                    handler.sendMessage(message);
+                    try {
+                        Thread.sleep(100);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }).start();
+        
+调用setProgress（）接口，传入进度值即可
