@@ -8,6 +8,7 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.os.Build;
+import android.os.Looper;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.util.Log;
@@ -132,6 +133,14 @@ public class HprogressView extends View {
         anim.start();
     }
 
+    public void setProgress(int progress){
+        this.progress=progress;
+        if (Looper.getMainLooper() == Looper.myLooper()) {
+            invalidate();
+        } else {
+            postInvalidate();
+        }
+    }
     private void drawBg(Canvas canvas) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             canvas.drawRoundRect(0, 0, mViewWidth, mViewHeight, mViewHeight / 2, mViewHeight / 2, bPaint);
